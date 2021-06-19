@@ -1,4 +1,7 @@
+import 'package:basic_flutter/models/cart.dart';
+import 'package:basic_flutter/pages/item_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CatalogListTile extends StatelessWidget {
   final imgUrl;
@@ -8,9 +11,12 @@ class CatalogListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartData = Provider.of<CartDataProvider>(context);
+    final cartItems = cartData.cartItems;
+
     return InkWell(
       onTap: () {
-        // navigator
+        // go to catalog
       },
       child: Container(
         padding: const EdgeInsets.all(10.0),
