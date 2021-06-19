@@ -1,5 +1,7 @@
 import 'package:basic_flutter/models/cart.dart';
 import 'package:basic_flutter/models/product.dart';
+import 'package:basic_flutter/pages/cart_page.dart';
+import 'package:basic_flutter/pages/item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +22,10 @@ class ItemCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ItemPage(productId: product.id,)));
+            },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -36,7 +41,7 @@ class ItemCard extends StatelessWidget {
                 ),
                 Container(
                   child: Text('${product.title}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       )),
@@ -53,7 +58,7 @@ class ItemCard extends StatelessWidget {
                     onPressed: () {
                       Provider.of<CartDataProvider>(context, listen: false)
                           .addItem(
-                              productId: product.imgUrl,
+                              productId: product.id,
                               price: product.price,
                               title: product.title,
                               imgUrl: product.imgUrl);

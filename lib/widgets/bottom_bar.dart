@@ -1,5 +1,6 @@
 import 'package:basic_flutter/models/cart.dart';
 import 'package:basic_flutter/pages/cart_page.dart';
+import 'package:basic_flutter/pages/item_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,9 @@ class BottomBar extends StatelessWidget {
                   tag: cartItems.values.toList()[index].imgUrl,
                   child: GestureDetector(
                     onTap: () {
-                      // !- navigate to product
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ItemPage(
+                              productId: cartData.cartItems.keys.toList()[index])));
                     },
                     child: Stack(
                       alignment: Alignment.center,
